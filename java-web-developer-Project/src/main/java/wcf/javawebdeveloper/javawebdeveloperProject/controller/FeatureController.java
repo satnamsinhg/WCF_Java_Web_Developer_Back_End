@@ -36,4 +36,10 @@ public class FeatureController {
     public List<Feature>  findFeaturesOfClient(@PathVariable String name) throws ClientNotFoundException {
         return featureService.findFeaturesByClientName(name);
     }
+
+    @RequestMapping("/clients/size/{name}")
+    public int  findFeaturesSizeOfClient(@PathVariable String name) throws ClientNotFoundException {
+        return featureService.findLengthOfFeaturesByClientName(name);
+    }
+
 }

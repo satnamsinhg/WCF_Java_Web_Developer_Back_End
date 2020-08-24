@@ -65,8 +65,11 @@ public class FeatureService {
         try
         {
             int id = clientService.getClientByName(clientName).get().getClientId();
-            List<Feature> list = featureRepository.findAll().stream()
+
+            List<Feature> list = new ArrayList<>();
+            list = featureRepository.findAll().stream()
                     .filter(f->f.getfClient().getClientId()==id).collect(Collectors.toList());
+            list.stream().forEach(f->f.setfClientPriority(f.getfClientPriority()+1));
             return list;
         }
         catch(NullPointerException e){
@@ -75,5 +78,12 @@ public class FeatureService {
         }
     }
 
-
+    public int findLengthOfFeaturesByClientName(String clientName){
+        int id = clientService.getClientByName(clientName).get().getClientId();
+        return (int)featureRepository
+                .findAll()
+                .stream()
+                .filter(feature -> feature.getfClient().getClientId()==id)
+                .count();
+    }
 }

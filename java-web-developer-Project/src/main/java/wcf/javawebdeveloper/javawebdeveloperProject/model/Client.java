@@ -3,8 +3,8 @@ package wcf.javawebdeveloper.javawebdeveloperProject.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CLIENT")
@@ -46,5 +46,19 @@ public class Client {
 
     public void setcFeatures(List<Feature> cFeatures) {
         this.cFeatures = cFeatures;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return getClientId() == client.getClientId() &&
+                getClientName().equals(client.getClientName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getClientId(), getClientName());
     }
 }

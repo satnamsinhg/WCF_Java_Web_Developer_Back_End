@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import wcf.javawebdeveloper.javawebdeveloperProject.model.Client;
 import wcf.javawebdeveloper.javawebdeveloperProject.repository.ClientRepository;
 
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
