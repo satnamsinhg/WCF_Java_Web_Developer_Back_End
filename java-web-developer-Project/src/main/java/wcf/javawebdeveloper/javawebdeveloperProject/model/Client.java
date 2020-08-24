@@ -1,6 +1,8 @@
 package wcf.javawebdeveloper.javawebdeveloperProject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,8 +14,9 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "ID of the Client", name = "id")
     private int clientId;
-
+    @ApiModelProperty(notes = "Name of the Client", name = "name", required = true)
     private String clientName;
 
     @JsonBackReference

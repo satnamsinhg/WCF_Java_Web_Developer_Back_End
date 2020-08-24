@@ -1,5 +1,8 @@
 package wcf.javawebdeveloper.javawebdeveloperProject.model;
 
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,18 +13,26 @@ public class Feature implements Comparable<Feature>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(notes = "ID of the Feature", name = "id")
     private int fId;
 
+    @ApiModelProperty(notes = "Title of the Feature", name = "title", required = true)
     private String fTitle;
+
+    @ApiModelProperty(notes = "Description of the Feature", name = "description", required = true)
     private String fDescription;
 
+    @ApiModelProperty(notes = "Client of the Feature", name = "client", required = true)
     @ManyToOne(targetEntity = Client.class)
     private Client fClient;
 
+    @ApiModelProperty(notes = "Priority of the Feature", name = "priority", required = true)
     private int fClientPriority;
 
+    @ApiModelProperty(notes = "Target Date of the Feature", name = "target Date", required = true)
     private Date fTargetDate;
 
+    @ApiModelProperty(notes = "Product Area of the Feature", name = "productArea", required = true)
     @Enumerated(EnumType.STRING)
     private ProductArea fProductArea;
 
