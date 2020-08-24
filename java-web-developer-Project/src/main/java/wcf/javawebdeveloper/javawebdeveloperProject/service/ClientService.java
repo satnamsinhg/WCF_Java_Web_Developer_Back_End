@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import wcf.javawebdeveloper.javawebdeveloperProject.model.Client;
 import wcf.javawebdeveloper.javawebdeveloperProject.repository.ClientRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +24,10 @@ public class ClientService {
 
     public void deleteClientById(int id){
         clientRepository.deleteById(id);
+    }
+
+    public List<Client> getClientList(){
+        return clientRepository.findAll();
     }
 
     public Optional<Client> getClientByName(String name){

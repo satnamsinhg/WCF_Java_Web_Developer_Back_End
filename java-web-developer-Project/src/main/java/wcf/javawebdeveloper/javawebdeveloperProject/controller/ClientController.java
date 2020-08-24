@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import wcf.javawebdeveloper.javawebdeveloperProject.model.Client;
 import wcf.javawebdeveloper.javawebdeveloperProject.service.ClientService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,6 +19,11 @@ public class ClientController {
     @PostMapping
     public Client createClient(@RequestBody Client client){
         return clientService.creatClient(client);
+    }
+
+    @GetMapping
+    public List<Client> getCLients(){
+        return clientService.getClientList();
     }
 
     @GetMapping("/{id}")
